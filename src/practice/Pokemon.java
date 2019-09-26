@@ -3,7 +3,7 @@ package practice;
 public class Pokemon {
 
 	//ポケモンの種類の判別
-	private int type;
+	private int kind;
 
 	//色違いの判別
 	private int shiny;
@@ -13,6 +13,9 @@ public class Pokemon {
 
 	//捕獲したポケモンの個体名
 	private String name;
+
+	//捕獲時にいた国
+	private static String getInCountry = "日本";
 
 	/**
 	 * ゲットしたポケモンのパラメータ設定するコンストラクタ
@@ -24,18 +27,19 @@ public class Pokemon {
 	 *    (1: モンスターボール,2: スーパーボール,3: ハイパーボール,4: プレミアボール)
 	 * @param name 捕獲したポケモンの個体名
 	 */
-	public Pokemon(int type, int shiny, int ball, String name) {
-		this.type = type;
+	public Pokemon(int kind, int shiny, int ball, String name) {
+		this.kind = kind;
 		this.shiny = shiny;
 		this.ball = ball;
 		this.name = name;
 		System.out.println();
-		if (type == 1 && ball == 1) {
+		if (kind == 1 && ball == 1) {
 			System.out.println("*** GoPLUSでゲットしたポケモン情報 ***");
 		} else {
 			System.out.println("*** ゲットしたポケモン情報 ***");
 		}
 		System.out.println("ポケモン名：" + name);
+		System.out.println("ゲットした場所：" + getInCountry);
 	}
 
 	/**
@@ -47,8 +51,8 @@ public class Pokemon {
 	 *    (1: モンスターボール,2: スーパーボール,3: ハイパーボール,4: プレミアボール)
 	 * @param name 捕獲したポケモンの個体名
 	 */
-	public Pokemon(int type, int ball, String name) {
-		this(type, 1, ball, name);
+	public Pokemon(int kind, int ball, String name) {
+		this(kind, 1, ball, name);
 	}
 
 	/**
@@ -67,16 +71,16 @@ public class Pokemon {
 	 * 捕獲ポケモンの種類を表示(通常、伝説、幻)
 	 * 捕獲ポケモンの色違いの有無を表示
 	 *
-	 * @param type ポケモンの種類の判別(1: 通常,2: 伝説,3: 幻)
+	 * @param kind ポケモンの種類の判別(1: 通常,2: 伝説,3: 幻)
 	 * @param shiny 色違いの判別(1: 通常色,2: 色違い)
 	 */
-	public void pokemonType() {
+	public void pokemonKind() {
 		//ポケモンの種類を表示
-		if (type == 1) {
+		if (kind == 1) {
 			System.out.print("通常のポケモン");
-		} else if (type == 2) {
+		} else if (kind == 2) {
 			System.out.print("伝説のポケモン");
-		} else if (type == 3) {
+		} else if (kind == 3) {
 			System.out.print("幻のポケモン");
 		}
 
@@ -156,23 +160,62 @@ public class Pokemon {
 	}
 
 	/**
-	 * ゲッター
-	 * typeの値を取得
+	 * ポケモンのタイプを表示する
 	 *
-	 * @return type ポケモンの種類の判別(1: 通常,2: 伝説,3: 幻)
+	 * @param name タイプを表示させたいポケモンの名前
 	 */
-	public int getType() {
-		return type;
+	public void pokemonType (String name) {
+		//ポケモンのタイプを配列に格納する
+		String[] pokemonType = new String[18];
+		pokemonType[0]  = "ノーマル";
+		pokemonType[1]  = "ほのお";
+		pokemonType[2]  = "みず";
+		pokemonType[3]  = "でんき";
+		pokemonType[4]  = "くさ";
+		pokemonType[5]  = "こおり";
+		pokemonType[6]  = "エスパー";
+		pokemonType[7]  = "かくとう";
+		pokemonType[8]  = "どく";
+		pokemonType[9]  = "じめん";
+		pokemonType[10] = "ひこう";
+		pokemonType[11] = "むし";
+		pokemonType[12] = "いわ";
+		pokemonType[13] = "ゴースト";
+		pokemonType[14] = "ドラゴン";
+		pokemonType[15] = "あく";
+		pokemonType[16] = "はがね";
+		pokemonType[17] = "フェアリー";
+
+		String message = " タイプです。";
+
+		if (name == "ピカチュウ") {
+			System.out.println(pokemonType[3] + message);
+		} else if (name == "ミュウツー") {
+			System.out.println(pokemonType[6] + message);
+		} else if (name == "ラルトス") {
+			System.out.println(pokemonType[6] + "&" + pokemonType[17] + message);
+		}
+
+	}
+
+	/**
+	 * ゲッター
+	 * kindの値を取得
+	 *
+	 * @return kind ポケモンの種類の判別(1: 通常,2: 伝説,3: 幻)
+	 */
+	public int getKind() {
+		return kind;
 	}
 
 	/**
 	 * セッター
-	 * typeの値を変更する
+	 * kindの値を変更する
 	 *
-	 * @param type ポケモンの種類の判別(1: 通常,2: 伝説,3: 幻)
+	 * @param kind ポケモンの種類の判別(1: 通常,2: 伝説,3: 幻)
 	 */
-	public void setType(int type) {
-		this.type = type;
+	public void setKind(int kind) {
+		this.kind = kind;
 	}
 
 	/**

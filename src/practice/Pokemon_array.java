@@ -50,7 +50,7 @@ public class Pokemon_array {
 		pokemonGO[2] = new Pokemon(2, "ラルトス");
 		System.out.println();
 		for (int i = 0; i < pokemonGO.length; i++) {
-			pokemonGO[i].pokemonType();
+			pokemonGO[i].pokemonKind();
 			pokemonGO[i].ballType();
 			pokemonGO[i].individualValue(5, 10, 15);
 			System.out.println();
