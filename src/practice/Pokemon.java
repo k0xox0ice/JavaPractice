@@ -17,6 +17,9 @@ public class Pokemon {
 	//捕獲時にいた国
 	private static String getInCountry = "日本";
 
+	//ポケモンのタイプの数
+	private static final int POKEMON_TYPE_NUMBER = 18;
+
 	/**
 	 * ゲットしたポケモンのパラメータ設定するコンストラクタ
 	 * GoPLUSで捕獲した場合はメッセージでGoPLUSを表示する
@@ -159,6 +162,7 @@ public class Pokemon {
 		}
 	}
 
+
 	/**
 	 * ポケモンのタイプを表示する
 	 *
@@ -166,7 +170,7 @@ public class Pokemon {
 	 */
 	public void pokemonType (String name) {
 		//ポケモンのタイプを配列に格納する
-		String[] pokemonType = new String[18];
+		String[] pokemonType = new String[POKEMON_TYPE_NUMBER];
 		pokemonType[0]  = "ノーマル";
 		pokemonType[1]  = "ほのお";
 		pokemonType[2]  = "みず";
@@ -278,6 +282,15 @@ public class Pokemon {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+
+
+	/**
+	 * ゲッター
+	 * ポケモンのタイプの種類数を表示する
+	 */
+	public void getPokemonTypeNumber() {
+		System.out.println("ポケモンのタイプは" + POKEMON_TYPE_NUMBER + "種類です。");
 	}
 
 }

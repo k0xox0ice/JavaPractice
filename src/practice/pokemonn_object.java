@@ -24,6 +24,16 @@ public class pokemonn_object {
 		rarutosu.pokemonKind();
 		rarutosu.pokemonType("ラルトス");
 		rarutosu.individualValue(5, 10, 7);
+
+		//タイプの種類数を表示
+		System.out.println();
+		pikatyu.getPokemonTypeNumber();
+
+		//サブクラスを読み込む
+		BattlePokemon rukario = new BattlePokemon(1, "ルカリオ", 1450);
+		rukario.individualValue(10, 10, 15);
+		rukario.pokemonSkillCheck(3);
+
 	}
 
 }
