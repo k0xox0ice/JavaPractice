@@ -1,4 +1,5 @@
 package practice;
+
 public class BattlePokemon extends Pokemon {
 	//ポケモンのCP値
 	private int cp;
@@ -19,7 +20,7 @@ public class BattlePokemon extends Pokemon {
 	 * @param name 捕獲したポケモンの個体名
 	 * @param cp 捕獲したポケモンのCPの値
 	 */
-	public BattlePokemon (int kind, int shiny, int ball, String name, int cp) {
+	public BattlePokemon(int kind, int shiny, int ball, String name, int cp) {
 		//スーパーコンストラクタを呼び出す
 		super(kind, shiny, ball, name);
 		this.cp = cp;
@@ -69,7 +70,6 @@ public class BattlePokemon extends Pokemon {
 		this(1, shiny, 1, name, cp);
 	}
 
-
 	/**
 	 * どのリーグで対戦できるかを表示
 	 * CPの値でどのリーグで活躍できるかを判断する
@@ -96,15 +96,89 @@ public class BattlePokemon extends Pokemon {
 	 */
 	public void pokemonSkillCheck(int skillNumber) {
 		switch (skillNumber) {
-			case 2:
-				System.out.println("技の解放ができます。");
-				break;
-			case 3:
-				System.out.println("技は解放済です。");
-				break;
-			default:
-				System.out.println("技の数が正しくありません。2つまたは3つです。");
-				System.out.println("再入力してください。");
+		case 2:
+			System.out.println("技の解放ができます。");
+			break;
+		case 3:
+			System.out.println("技は解放済です。");
+			break;
+		default:
+			System.out.println("技の数が正しくありません。2つまたは3つです。");
+			System.out.println("再入力してください。");
+		}
+	}
+
+	/**
+	 * オーバーライド
+	 * toStringメソッドをオーバーライドする
+	 *
+	 * @return BattlePokemonクラスのフィールド変数の値を出力
+	 */
+	@Override
+	public String toString() {
+		return "cp = " + cp;
+	}
+
+	/**
+	 * 個体値の各パラメータが正常な値であるかを確認
+	 * 0 <= && >= 15であれば正常
+	 * それ以外ならば不適切であると判断
+	 *
+	 * @param value
+	 * @return true (0 <= parameter && parameter <= 15) / false 左記以外
+	 */
+
+	/**
+	 * オーバーライド
+	 * 個体値の計算を行う
+	 * atkの値を確認し、値ごとに異なるメッセージを出力する
+	 *
+	 * @param hp  HP  の個体値(範囲指定: 0 <= hp  <= 15)
+	 * @param atk 攻撃の個体値(範囲指定: 0 <= atk <= 15)
+	 * @param def 防御の個体値(範囲指定: 0 <= def <= 15)
+	 */
+	@Override
+	public void individualValue(int hp, int atk, int def) {
+
+		boolean isError = false;
+		int i = getCp();
+
+		/*
+		//0 <= hp <= 15であるかをチェック
+		if (isCheakParameter(hp) == false) {
+			System.out.println("hpの値が不適切です。");
+			isError = true;
+		}
+		//0 <= atk <= 15であるかをチェック
+		if (isCheakParameter(atk) == false) {
+			System.out.println("atkの値が不適切です。");
+			isError = true;
+		}
+		//0 <= def <= 15であるかをチェック
+		if (isCheakParameter(def) == false) {
+			System.out.println("defの値が不適切です。");
+			isError = true;
+		}
+
+		if (isError == false) {
+			//個体値計算
+			double value = (hp + atk + def) / 45.0 * 100;
+			//個体値計算結果を出力
+			System.out.println("個体値は" + value + "% です。");*/
+
+		super.individualValue(hp, atk, def);
+
+		if (isError == false) {
+			//atkを参照して値ごとにメッセージを出力
+			if (atk >= 10) {
+				System.out.println("atkの値が高めです。");
+				System.out.println("atkの値が低い個体を探しましょう。");
+			} else if (atk >= 5) {
+				System.out.println("atkの値は少し高めです。");
+			} else {
+				System.out.println("atkの個体値は低めです。");
+				System.out.println("この個体を育成しましょう。");
+			}
 		}
 	}
 

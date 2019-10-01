@@ -34,6 +34,16 @@ public class pokemonn_object {
 		rukario.individualValue(10, 10, 15);
 		rukario.pokemonSkillCheck(3);
 
+		System.out.println();
+		Object objSuper = new Pokemon(1, 1, 4, "スーパークラス");
+		//kind, shiny, ball, nameが出力される
+		System.out.println("****************************");
+		System.out.println(objSuper);
+		Object objSub = new BattlePokemon(1, 1, 4, "サブクラス", 1500);
+		//cpが出力される
+		System.out.println("****************************");
+		System.out.println(objSub);
+
 	}
 
 }

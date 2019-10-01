@@ -1,6 +1,8 @@
 package practice;
 
 public class Pokemon {
+	//改行を表す変数の定義
+	public static String linecd = System.getProperty("line.separator");
 
 	//ポケモンの種類の判別
 	private int kind;
@@ -21,7 +23,8 @@ public class Pokemon {
 	private static final int POKEMON_TYPE_NUMBER = 18;
 
 	/**
-	 * ゲットしたポケモンのパラメータ設定するコンストラクタ
+	 * コンストラクタ
+	 * ゲットしたポケモンのパラメータ設定する
 	 * GoPLUSで捕獲した場合はメッセージでGoPLUSを表示する
 	 *
 	 * @param type ポケモンの種類の判別(1: 通常,2: 伝説,3: 幻)
@@ -46,7 +49,8 @@ public class Pokemon {
 	}
 
 	/**
-	 * 通常色のポケモンをゲットした場合のパラメータ設定するコンストラクタ
+	 * コンストラクタ
+	 * 通常色のポケモンをゲットした場合のパラメータ設定する
 	 *    (shiny = 1、通常色ポケモンに指定)
 	 *
 	 * @param type ポケモンの種類の判別(1: 通常,2: 伝説,3: 幻)
@@ -59,7 +63,8 @@ public class Pokemon {
 	}
 
 	/**
-	 * GoPLUSで捕獲したポケモンのパラメータ設定するコンストラクタ
+	 * コンストラクタ
+	 * GoPLUSで捕獲したポケモンのパラメータ設定する
 	 *    (type = 1、通常のポケモン
 	 *     ball = 1、モンスターボールで捕獲に指定)
 	 *
@@ -115,7 +120,7 @@ public class Pokemon {
 	 * 個体値を%表記で表示する
 	 * 各パラメータが範囲外の場合は、エラーメッセージを表示する
 	 *
-	 * @param hp HPの個体値(範囲指定: 0 <= hp <= 15)
+	 * @param hp  HP  の個体値(範囲指定: 0 <= hp  <= 15)
 	 * @param atk 攻撃の個体値(範囲指定: 0 <= atk <= 15)
 	 * @param def 防御の個体値(範囲指定: 0 <= def <= 15)
 	 */
@@ -162,25 +167,24 @@ public class Pokemon {
 		}
 	}
 
-
 	/**
 	 * ポケモンのタイプを表示する
 	 *
 	 * @param name タイプを表示させたいポケモンの名前
 	 */
-	public void pokemonType (String name) {
+	public void pokemonType(String name) {
 		//ポケモンのタイプを配列に格納する
 		String[] pokemonType = new String[POKEMON_TYPE_NUMBER];
-		pokemonType[0]  = "ノーマル";
-		pokemonType[1]  = "ほのお";
-		pokemonType[2]  = "みず";
-		pokemonType[3]  = "でんき";
-		pokemonType[4]  = "くさ";
-		pokemonType[5]  = "こおり";
-		pokemonType[6]  = "エスパー";
-		pokemonType[7]  = "かくとう";
-		pokemonType[8]  = "どく";
-		pokemonType[9]  = "じめん";
+		pokemonType[0] = "ノーマル";
+		pokemonType[1] = "ほのお";
+		pokemonType[2] = "みず";
+		pokemonType[3] = "でんき";
+		pokemonType[4] = "くさ";
+		pokemonType[5] = "こおり";
+		pokemonType[6] = "エスパー";
+		pokemonType[7] = "かくとう";
+		pokemonType[8] = "どく";
+		pokemonType[9] = "じめん";
 		pokemonType[10] = "ひこう";
 		pokemonType[11] = "むし";
 		pokemonType[12] = "いわ";
@@ -203,10 +207,21 @@ public class Pokemon {
 	}
 
 	/**
+	 * オーバーライド
+	 * toStringメソッドの返り値を変更
+	 *
+	 * @return kind, shiny, ball, nameの値を返す
+	 */
+	@Override
+	public String toString() {
+		return "kind = " + kind + linecd + "shiny = " + shiny + linecd + "ball = " + ball + linecd + "name = " + name;
+	}
+
+	/**
 	 * ゲッター
 	 * kindの値を取得
 	 *
-	 * @return kind ポケモンの種類の判別(1: 通常,2: 伝説,3: 幻)
+	 * @return kind ポケモンの種類の判別(1: 通常, 2: 伝説, 3: 幻)
 	 */
 	public int getKind() {
 		return kind;
@@ -283,7 +298,6 @@ public class Pokemon {
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	/**
 	 * ゲッター
