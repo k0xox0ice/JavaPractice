@@ -183,6 +183,28 @@ public class BattlePokemon extends Pokemon {
 	}
 
 	/**
+	 * インターフェイスのメソッドをオーバーライド
+	 * 攻撃の個体値から対戦向きであるかを出力する
+	 */
+	@Override
+	public void info(int hp, int atk, int def) {
+		if (atk < 10) {
+			System.out.println("対戦向けのポケモンです。");
+		} if (atk >= 10) {
+			System.out.println("対戦に不向きなポケモンです。");
+		}
+	}
+
+	/**
+	 * インタフェースのメソッドをオーバーライド
+	 * 交換してほしいポケモン名を返す
+	 */
+	@Override
+	public String wantPokemonName() {
+		return "フカマル";
+	}
+
+	/**
 	 * ゲッター
 	 * CPの値を取得
 	 *

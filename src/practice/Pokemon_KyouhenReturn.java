@@ -8,5 +8,5 @@ public class Pokemon_KyouhenReturn {
 	}
 
 	Pokemon entei = create();
-	entei.individualValue(7, 12, 9);
+	//entei.individualValue(7, 12, 9);
 }

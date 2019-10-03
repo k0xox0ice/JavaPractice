@@ -37,6 +37,10 @@ public class Houen extends Pokemon_BattleSystem{
 		return "新たなメガシンカポケモンの追加";
 	}
 
+	@Override
+	public void famousPokemon() {
+		System.out.println("ボーマンダ");
+	}
 
 
 }

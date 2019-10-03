@@ -11,6 +11,8 @@ public class pokemonn_object {
 		pikatyu.pokemonType("ピカチュウ");
 		pikatyu.ballType();
 		pikatyu.individualValue(3, 5, 70);
+		pikatyu.info(5, 12, 8);
+		System.out.println(pikatyu.wantPokemonName() + "と交換したいです。");
 
 		//アプリ画面でゲットしたミュウツーの情報
 		Pokemon myutwo = new Pokemon(2, 4, "ミュウツー");
@@ -33,6 +35,7 @@ public class pokemonn_object {
 		BattlePokemon rukario = new BattlePokemon(1, "ルカリオ", 1450);
 		rukario.individualValue(10, 10, 15);
 		rukario.pokemonSkillCheck(3);
+		rukario.info(5, 14, 12);
 
 		System.out.println();
 		Object objSuper = new Pokemon(1, 1, 4, "スーパークラス");

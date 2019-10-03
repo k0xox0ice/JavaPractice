@@ -9,7 +9,7 @@ public class Static_confirmation {
 
 	public static void divition() {
 		// TODO 自動生成されたメソッド・スタブ
-		addition(1, 4);
+		//addition(1, 4);
 	}
 
 	public void addition(int a, int b) {

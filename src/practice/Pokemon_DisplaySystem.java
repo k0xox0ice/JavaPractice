@@ -15,6 +15,7 @@ public class Pokemon_DisplaySystem {
 		System.out.println(regionName.systemName());
 		System.out.println(regionName.generationNumber());
 		System.out.println(regionName.newPokmons(regionName.getKindNumber()));
+		regionName.famousPokemon();
 	}
 
 }

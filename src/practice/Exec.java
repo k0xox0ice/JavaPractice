@@ -15,10 +15,10 @@ public class Exec {
 		display.run(new Arora(40));
 
 		System.out.println("***************************");
-		display.run(new Houen(80));
+		Houen houen = new Houen(80);
+		display.run(houen);
 
 		System.out.println("---------------------------");
-		Houen houen = new Houen(80);
 		System.out.println(houen.remakeInformation());
 		System.out.println(houen.generationNumber());
 

@@ -1,6 +1,6 @@
 package practice;
 
-public abstract class Pokemon_BattleSystem {
+public abstract class Pokemon_BattleSystem implements FamousPokemon {
 
 	//ポリモーフィズムの確認
 	//スーパークラス

@@ -1,6 +1,6 @@
 package practice;
 
-public class Pokemon {
+public class Pokemon implements dicideStorePokemon, exchangePokemon {
 	//改行を表す変数の定義
 	public static String linecd = System.getProperty("line.separator");
 
@@ -204,6 +204,36 @@ public class Pokemon {
 			System.out.println(pokemonType[6] + "&" + pokemonType[17] + message);
 		}
 
+	}
+
+
+	/**
+	 * インターフェイスのメソッドをオーバーライド
+	 * 高個体値であればボックスに残すメッセージを出力
+	 */
+	@Override
+	public void info(int hp, int atk, int def) {
+
+		boolean isCheakPrice = true;
+
+		if (hp < 10) {
+			isCheakPrice = false;
+		} else if (atk < 10) {
+			isCheakPrice = false;
+		} else if (def < 10) {
+			isCheakPrice = false;
+		}
+
+		if (isCheakPrice == true) {
+			System.out.println("高個体値です。ボックスに残します。");
+		} else {
+			System.out.println("低個体値です。ボックスに残しません。");
+		}
+	}
+
+	@Override
+	public String wantPokemonName() {
+		return "ツタージャ";
 	}
 
 	/**
