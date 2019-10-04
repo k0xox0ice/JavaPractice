@@ -10,9 +10,11 @@ public class Exec {
 		//display.run(regionName);
 
 		display.run(new Karosu(60));
+		Karosu karosu = new Karosu(60);
 
 		System.out.println("***************************");
 		display.run(new Arora(40));
+		Arora arora = new Arora(60);
 
 		System.out.println("***************************");
 		Houen houen = new Houen(80);
@@ -21,6 +23,15 @@ public class Exec {
 		System.out.println("---------------------------");
 		System.out.println(houen.remakeInformation());
 		System.out.println(houen.generationNumber());
+
+		System.out.println();
+		System.out.println(houen.equals(karosu));
+		System.out.println(karosu.equals(arora));
+		System.out.println(arora.equals(arora));
+
+
+
+
 
 
 	}
