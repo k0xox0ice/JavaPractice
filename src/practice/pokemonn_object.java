@@ -1,5 +1,10 @@
 package practice;
 
+import java.util.ArrayList;
+//import java.util.Iterator;
+import java.util.List;
+
+
 public class pokemonn_object {
 
 	public static void main(String[] args) {
@@ -13,6 +18,7 @@ public class pokemonn_object {
 		pikatyu.individualValue(3, 5, 70);
 		pikatyu.info(5, 12, 8);
 		System.out.println(pikatyu.wantPokemonName() + "と交換したいです。");
+		System.out.println(pikatyu.getInstanceNumber());
 
 		//アプリ画面でゲットしたミュウツーの情報
 		Pokemon myutwo = new Pokemon(2, 4, "ミュウツー");
@@ -20,12 +26,40 @@ public class pokemonn_object {
 		myutwo.pokemonType("ミュウツー");
 		myutwo.ballType();
 		myutwo.individualValue(13, -14, 15);
+		System.out.println(myutwo.getInstanceNumber());
 
 		//GoPLUSでゲットしたラルトスの情報
 		Pokemon rarutosu = new Pokemon(1, "ラルトス");
 		rarutosu.pokemonKind();
 		rarutosu.pokemonType("ラルトス");
 		rarutosu.individualValue(5, 10, 7);
+		System.out.println(rarutosu.getInstanceNumber());
+
+		System.out.println();
+		System.out.println("-----for文-----");
+
+		List<Pokemon> holdingList = new ArrayList<>();
+		holdingList.add(pikatyu);
+		holdingList.add(myutwo);
+		holdingList.add(rarutosu);
+
+		for (int i = 0; i < holdingList.size(); i++) {
+			System.out.println(holdingList.get(i).getName());
+		}
+
+		/*
+		System.out.println();
+		System.out.println("-----イテレータ-----");
+
+		Iterator<Pokemon> it = holdingList.iterator();
+		while (it.hasNext() == true) {
+			Pokemon array = it.next();
+			System.out.println(array);
+		}
+		*/
+
+		System.out.println(pikatyu.hasNext());
+		//System.out.println(pikatyu.next());
 
 		//タイプの種類数を表示
 		System.out.println();

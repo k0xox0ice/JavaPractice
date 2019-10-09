@@ -1,6 +1,8 @@
 package practice;
 
-public class Pokemon implements dicideStorePokemon, exchangePokemon {
+import java.util.Iterator;
+
+public class Pokemon implements dicideStorePokemon, exchangePokemon, Iterator {
 	//改行を表す変数の定義
 	public static String linecd = System.getProperty("line.separator");
 
@@ -22,12 +24,15 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon {
 	//ポケモンのタイプの数
 	private static final int POKEMON_TYPE_NUMBER = 18;
 
+	//作成したインスタンスの通し番号
+	private static int instanceNumber;
+
 	/**
 	 * コンストラクタ
 	 * ゲットしたポケモンのパラメータ設定する
 	 * GoPLUSで捕獲した場合はメッセージでGoPLUSを表示する
 	 *
-	 * @param type ポケモンの種類の判別(1: 通常,2: 伝説,3: 幻)
+	 * @param kind ポケモンの種類の判別(1: 通常,2: 伝説,3: 幻)
 	 * @param shiny 色違いの判別(1: 通常色,2: 色違い)
 	 * @param ball 捕獲時に使用したボールの判別
 	 *    (1: モンスターボール,2: スーパーボール,3: ハイパーボール,4: プレミアボール)
@@ -38,6 +43,7 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon {
 		this.shiny = shiny;
 		this.ball = ball;
 		this.name = name;
+		instanceNumber++;
 		System.out.println();
 		if (kind == 1 && ball == 1) {
 			System.out.println("*** GoPLUSでゲットしたポケモン情報 ***");
@@ -206,7 +212,6 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon {
 
 	}
 
-
 	/**
 	 * インターフェイスのメソッドをオーバーライド
 	 * 高個体値であればボックスに残すメッセージを出力
@@ -245,6 +250,30 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon {
 	@Override
 	public String toString() {
 		return "kind = " + kind + linecd + "shiny = " + shiny + linecd + "ball = " + ball + linecd + "name = " + name;
+	}
+
+	@Override
+	public boolean hasNext() {
+		int counter = 1;
+		if ((counter < instanceNumber) == true) {
+			counter++;
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public String next() {
+		int counter = 1;
+		if ((counter == instanceNumber) == true) {
+			String arrayName = this.name;
+			return arrayName;
+		} else {
+			counter++;
+			return next();
+		}
+
 	}
 
 	/**
@@ -335,6 +364,15 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon {
 	 */
 	public void getPokemonTypeNumber() {
 		System.out.println("ポケモンのタイプは" + POKEMON_TYPE_NUMBER + "種類です。");
+	}
+
+	/**
+	 * ゲッター
+	 *
+	 * @return
+	 */
+	public int getInstanceNumber() {
+		return instanceNumber;
 	}
 
 }
