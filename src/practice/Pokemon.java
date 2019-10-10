@@ -43,7 +43,7 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon, Iterator {
 		this.shiny = shiny;
 		this.ball = ball;
 		this.name = name;
-		instanceNumber++;
+		//instanceNumber++;
 		System.out.println();
 		if (kind == 1 && ball == 1) {
 			System.out.println("*** GoPLUSでゲットしたポケモン情報 ***");
