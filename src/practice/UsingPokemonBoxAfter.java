@@ -1,6 +1,6 @@
 package practice;
 
-public class UsingPokemonBox extends PokemonList {
+public class UsingPokemonBoxAfter extends PokemonListAfter {
 
 	/**
 	 * コンストラクタ
@@ -8,7 +8,7 @@ public class UsingPokemonBox extends PokemonList {
 	 *
 	 * @param ENTRY_MAX_NUMBER ボックスの上限値+1の値を入力する
 	 */
-	public UsingPokemonBox(/*int ENTRY_MAX_NUMBER*/) {
+	public UsingPokemonBoxAfter(/*int ENTRY_MAX_NUMBER*/) {
 		super();
 		//setEntryMaxNumber(ENTRY_MAX_NUMBER);
 	}

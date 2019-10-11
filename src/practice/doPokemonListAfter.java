@@ -1,6 +1,6 @@
 package practice;
 
-public class doPokemonList {
+public class doPokemonListAfter {
 
 	public static void main(String[] args) {
 		// TODO 自動生成されたメソッド・スタブ
@@ -15,9 +15,8 @@ public class doPokemonList {
 		Pokemon mikaruge = new Pokemon(1, 1, 2, "ミカルゲ");
 		System.out.println();
 
-		PokemonList hold1 = new HoldingPokemon();
-		PokemonList box1 = new UsingPokemonBox();
-		//box1.arrayDisplay();
+		PokemonListAfter hold1 = new HoldingPokemonAfter();
+		//PokemonListAfter box1 = new UsingPokemonBoxAfter();
 
 		//手持ちへの追加
 		hold1.entry(mikaruge);
@@ -33,19 +32,19 @@ public class doPokemonList {
 
 
 		//ボックスへの登録
-		box1.entry(pikatyu);
-		box1.entry(myutwo);
-		box1.entry(rarutosu);
-		box1.entry(nakkura);
-		box1.entry(hitokage);
-		box1.entry(giratelina);
-		box1.entry(suikun);
-		box1.entry(mikaruge);
+		//box1.entry(pikatyu);
+		//box1.entry(myutwo);
+		//box1.entry(rarutosu);
+		//box1.entry(nakkura);
+		//box1.entry(hitokage);
+		//box1.entry(giratelina);
+		//box1.entry(suikun);
+		//box1.entry(mikaruge);
 
-		box1.arrayDisplay();
-		box1.residueMessage();
-		box1.isShiny(8);
-		box1.isNomal(2);
+		//box1.arrayDisplay();
+		//box1.residueMessage();
+		//box1.isShiny(8);
+		//box1.isNomal(2);
 
 
 	}
