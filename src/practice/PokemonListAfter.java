@@ -12,9 +12,13 @@ public abstract class PokemonListAfter implements Iterator<Pokemon> {
 	//ポケモンの登録番号
 	private int counter;
 
+	//イテレーター用の変数
+	private int iteratorCount = 0;
+
 	//ポケモンの名前を保管する配列を作成
 	//この配列は0番目の要素に値を代入しない
 	private int entryMaxNumber;
+	private Pokemon[] entryList;
 
 	/**
 	 * オーバーライド
@@ -27,8 +31,8 @@ public abstract class PokemonListAfter implements Iterator<Pokemon> {
 	@Override
 	public boolean hasNext() {
 
-		if (counter < entryMaxNumber) {
-			counter++;
+		if (iteratorCount < counter) {
+			iteratorCount++;
 			return true;
 		} else {
 			return false;
@@ -42,7 +46,7 @@ public abstract class PokemonListAfter implements Iterator<Pokemon> {
 	 */
 	@Override
 	public Pokemon next() {
-		return entryList[counter];
+		return entryList[iteratorCount];
 	}
 
 	/**
@@ -72,31 +76,37 @@ public abstract class PokemonListAfter implements Iterator<Pokemon> {
 		//登録番号を振る
 		int entryNumber = ++counter;
 
-		System.out.println(entryList.length);
-
-		for (int i = 1; i < 7; i++) {
-			System.out.print(i + "   ");
-			System.out.println(entryList[i].getName() + "   ");
-		}
+		//System.out.println(entryList.length);
 
 		//登録番号を参考にしてPokemonインスタンスを配列に代入する
 		entryList[entryNumber] = pokemonName;
+
 	}
 
+	/**
+	 * 配列に登録したポケモン名の一覧を出力する
+	 * 登録していない要素は"-----"で表示する
+	 */
 	public void arrayDisplay() {
-		//System.out.println("num   name             kind   shiny   ball");
-		for (int i = 1; i < 10; i++) {
-			System.out.print(i + "   ");
-			System.out.println(entryList[i] + "   ");
-			//System.out.print(entryListInformation[i][INFORMATION_KIND] + "      ");
-			//System.out.print(entryListInformation[i][INFORMATION_SHINY] + "       ");
-			//System.out.println(entryListInformation[i][INFORMATION_BALL] + "      ");
+		System.out.println("=== リスト一覧 ===");
+		//配列に登録されたポケモンを出力する
+		for (int i = 1; i <= counter; i++) {
+			if (i <= 9) {
+				System.out.println(i + " ：" + entryList[i].getName());
+			} else if (9 < i && i <= counter) {
+				System.out.println(i + "：" + entryList[i].getName());
+			}
 		}
 
-		for (int i = 10; i < 31; i++) {
-			System.out.print(i + "  ");
-			System.out.println(entryList[i] + "   ");
+		//登録されていない配列要素は---で出力する
+		for (int i = counter + 1; i < entryMaxNumber; i++) {
+			if (i <= 9) {
+				System.out.println(i + " ：" + "-----");
+			} else if (9 < i && i <= entryMaxNumber) {
+				System.out.println(i + "：" + "-----");
+			}
 		}
+
 	}
 
 	/**
@@ -166,20 +176,42 @@ public abstract class PokemonListAfter implements Iterator<Pokemon> {
 	 * セッター
 	 * ポケモンを登録する配列の要素の最大数を入力する
 	 *
-	 * @param maxNumber ポケモンを登録する配列の最大要素数を入力する
+	 * @param maxNumber entryMaxNumberに代入する値
 	 * ボックス -> 30、手持ち -> 6 を入力
 	 */
 	public void setEntryMaxNumber(int number) {
 		entryMaxNumber = number;
 	}
 
+	/**
+	 * ゲッター
+	 * ポケモンを登録する配列の要素の最大数を取得する
+	 *
+	 * @return entryMaxNumberの値を返す
+	 */
 	public int getEntryMaxNumber() {
 		return entryMaxNumber;
 	}
 
-	public Pokemon getEntryList(int number) {
-		return entryList[number];
+	/**
+	 * ゲッター
+	 * 配列に登録した任意の配列番号のポケモンを呼び出す
+	 * @param listNumber 登録した配列番号
+	 * @return listNumberに対応するPokemonインスタンス
+	 */
+	public Pokemon getEntryList(int listNumber) {
+		return entryList[listNumber];
 	}
 
+	/**
+	 * セッター
+	 * ポケモンを登録する配列に作成した配列を代入する
+	 * スーパークラスでポケモンを登録するための配列の名前のみ宣言している
+	 * サブクラスのコンストラクタで作成した配列を代入するために使用する
+	 */
+	public Pokemon[] setEntrylist(Pokemon[] array) {
+		entryList = array;
+		return entryList;
+	}
 
 }

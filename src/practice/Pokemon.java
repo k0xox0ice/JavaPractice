@@ -1,8 +1,6 @@
 package practice;
 
-import java.util.Iterator;
-
-public class Pokemon implements dicideStorePokemon, exchangePokemon, Iterator {
+public class Pokemon implements dicideStorePokemon, exchangePokemon, Comparable<Pokemon> {
 	//改行を表す変数の定義
 	public static String linecd = System.getProperty("line.separator");
 
@@ -17,6 +15,9 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon, Iterator {
 
 	//捕獲したポケモンの個体名
 	private String name;
+
+	//ポケモン図鑑番号
+	private int guideNumber;
 
 	//捕獲時にいた国
 	private static String getInCountry = "日本";
@@ -37,13 +38,13 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon, Iterator {
 	 * @param ball 捕獲時に使用したボールの判別
 	 *    (1: モンスターボール,2: スーパーボール,3: ハイパーボール,4: プレミアボール)
 	 * @param name 捕獲したポケモンの個体名
+	 * @param guideNumber ポケモンの図鑑番号
 	 */
 	public Pokemon(int kind, int shiny, int ball, String name) {
 		this.kind = kind;
 		this.shiny = shiny;
 		this.ball = ball;
 		this.name = name;
-		//instanceNumber++;
 		System.out.println();
 		if (kind == 1 && ball == 1) {
 			System.out.println("*** GoPLUSでゲットしたポケモン情報 ***");
@@ -63,6 +64,7 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon, Iterator {
 	 * @param ball 捕獲時に使用したボールの判別
 	 *    (1: モンスターボール,2: スーパーボール,3: ハイパーボール,4: プレミアボール)
 	 * @param name 捕獲したポケモンの個体名
+	 * @param guideNumber ポケモンの図鑑番号
 	 */
 	public Pokemon(int kind, int ball, String name) {
 		this(kind, 1, ball, name);
@@ -76,6 +78,7 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon, Iterator {
 	 *
 	 * @param shiny(1: 通常色,2: 色違い)
 	 * @param name 捕獲したポケモンの個体名
+	 * @param guideNumber ポケモンの図鑑番号
 	 */
 	public Pokemon(int shiny, String name) {
 		this(1, shiny, 1, name);
@@ -241,6 +244,17 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon, Iterator {
 		return "ツタージャ";
 	}
 
+	@Override
+	public int compareTo(Pokemon pokemonName) {
+		if (this.guideNumber < pokemonName.guideNumber) {
+			return -1;
+		} else if (this.guideNumber > pokemonName.guideNumber) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+
 	/**
 	 * オーバーライド
 	 * toStringメソッドの返り値を変更
@@ -249,31 +263,54 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon, Iterator {
 	 */
 	@Override
 	public String toString() {
-		return "kind = " + kind + linecd + "shiny = " + shiny + linecd + "ball = " + ball + linecd + "name = " + name;
+		return "kind  = " + kind
+				+ linecd + "shiny = " + shiny
+				+ linecd + "ball  = " + ball
+				+ linecd + "name  = " + name;
 	}
 
+
+	/**
+	 * オーバーライド
+	 * hashCodeの内容を上書き
+	 *
+	 * @return int型の値を返す
+	 */
 	@Override
-	public boolean hasNext() {
-		int counter = 1;
-		if ((counter < instanceNumber) == true) {
-			counter++;
+	public int hashCode() {
+		int result = 37;
+		result = result * 31 + name.hashCode();
+		result = result * 31 + kind;
+		result = result * 31 + shiny;
+		result = result * 31 + ball;
+		return result;
+	}
+
+	/**
+	 * オーバーライド
+	 * equalsメソッドの条件式を変更
+	 *
+	 * @return インスタンス同士が同じであればtrue、異なるならばfalseを返す
+	 */
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
 			return true;
-		} else {
+		}
+		if (o == null) {
 			return false;
 		}
-	}
-
-	@Override
-	public String next() {
-		int counter = 1;
-		if ((counter == instanceNumber) == true) {
-			String arrayName = this.name;
-			return arrayName;
-		} else {
-			counter++;
-			return next();
+		if ((o instanceof Pokemon) == false) {
+			return false;
 		}
-
+		Pokemon p = (Pokemon) o;
+		if ((p.kind == this.kind
+				&& p.shiny == this.shiny
+				&& p.ball == this.ball
+				&& p.name == this.name) == true) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -373,6 +410,16 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon, Iterator {
 	 */
 	public int getInstanceNumber() {
 		return instanceNumber;
+	}
+
+	/**
+	 * セッター
+	 * 図鑑番号を登録する
+	 *
+	 * @param number 登録する図鑑番号
+	 */
+	public void setGuideNumber(int number) {
+		guideNumber = number;
 	}
 
 }
