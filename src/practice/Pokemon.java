@@ -1,8 +1,8 @@
 package practice;
 
-public class Pokemon implements dicideStorePokemon, exchangePokemon, Comparable<Pokemon> {
+public class Pokemon implements dicideStorePokemon, exchangePokemon, Comparable<Pokemon>, Cloneable {
 	//改行を表す変数の定義
-	public static String linecd = System.getProperty("line.separator");
+	private static String linecd = System.getProperty("line.separator");
 
 	//ポケモンの種類の判別
 	private int kind;
@@ -215,6 +215,19 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon, Comparable<
 
 	}
 
+	public Pokemon clone() {
+		//コピー先のオブジェクトを作成
+		Pokemon copyPokemon = new Pokemon(kind, shiny, ball, name);
+		//フィールド変数の値をコピーする
+		copyPokemon.kind = this.kind;
+		copyPokemon.shiny = this.shiny;
+		copyPokemon.ball = this.ball;
+		copyPokemon.name = this.name;
+		copyPokemon.guideNumber = this.guideNumber;
+
+		return copyPokemon;
+	}
+
 	/**
 	 * インターフェイスのメソッドをオーバーライド
 	 * 高個体値であればボックスに残すメッセージを出力
@@ -244,6 +257,13 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon, Comparable<
 		return "ツタージャ";
 	}
 
+	/**
+	 * オーバーライド
+	 * 自然順序付けの定義
+	 * 図鑑番号を基準にして順番を変更する
+	 *
+	 * @param 比較対象のポケモンオブジェクト
+	 */
 	@Override
 	public int compareTo(Pokemon pokemonName) {
 		if (this.guideNumber < pokemonName.guideNumber) {
@@ -254,6 +274,7 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon, Comparable<
 			return 0;
 		}
 	}
+
 
 	/**
 	 * オーバーライド
@@ -420,6 +441,10 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon, Comparable<
 	 */
 	public void setGuideNumber(int number) {
 		guideNumber = number;
+	}
+
+	public int getGuideNumber() {
+		return guideNumber;
 	}
 
 }
