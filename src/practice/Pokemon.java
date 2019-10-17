@@ -117,7 +117,7 @@ public class Pokemon implements dicideStorePokemon, exchangePokemon, Comparable<
 	 * @param value
 	 * @return true (0 <= parameter && parameter <= 15) / false 左記以外
 	 */
-	private boolean isCheakParameter(int parameter) {
+	public boolean isCheakParameter(int parameter) {
 		if (0 <= parameter && parameter <= 15) {
 			return true;
 		} else {

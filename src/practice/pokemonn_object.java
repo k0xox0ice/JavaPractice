@@ -3,6 +3,7 @@ package practice;
 import java.util.ArrayList;
 //import java.util.Iterator;
 import java.util.List;
+import java.util.function.IntPredicate;
 
 
 public class pokemonn_object {
@@ -58,7 +59,7 @@ public class pokemonn_object {
 		}
 		*/
 
-		System.out.println(pikatyu.hasNext());
+		//System.out.println(pikatyu.hasNext());
 		//System.out.println(pikatyu.next());
 
 		//タイプの種類数を表示
@@ -80,6 +81,19 @@ public class pokemonn_object {
 		//cpが出力される
 		System.out.println("****************************");
 		System.out.println(objSub);
+
+		//SAMインフェースを型に持つ変数を宣言
+		//インタフェースの型 変数 = インスタンス名::インスタンスのメソッド名
+		CheakParametorFunktion function = pikatyu::isCheakParameter;
+
+		//インタフェースのメソッドで呼び出す
+		boolean p = function.function(14);
+
+		System.out.println(p);
+
+		IntPredicate func = pikatyu::isCheakParameter;
+		boolean p2 = func.test(45);
+		System.out.println(p2);
 
 	}
 
