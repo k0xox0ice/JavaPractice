@@ -13,7 +13,6 @@ public class doPokemonListAfter {
 		Pokemon giratelina = new Pokemon(2, 4, "ギラティナ");
 		Pokemon suikun = new Pokemon(1, 4, "スイクン");
 		Pokemon mikaruge = new Pokemon(1, 1, 2, "ミカルゲ");
-		Pokemon pikatyu2 = new Pokemon(1, 2, 3, "ピカチュウ");
 		System.out.println();
 
 		PokemonListAfter hold1 = new HoldingPokemonAfter();
