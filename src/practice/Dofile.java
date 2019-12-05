@@ -13,6 +13,12 @@ public class Dofile {
 		//ファイルに書き込む
 		WriteFile writeFile = new WriteFile();
 
+		//ファイルに上書き
+		WriteFile2 writeFile2 = new WriteFile2();
+
+		//ファイルに追記
+		WriteFile writeFile3 = new WriteFile();
+
 
 	}
 
