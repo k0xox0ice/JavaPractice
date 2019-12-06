@@ -19,6 +19,12 @@ public class Dofile {
 		//ファイルに追記
 		WriteFile writeFile3 = new WriteFile();
 
+		//ファイルに書き込む
+		WriteResume resume = new WriteResume();
+
+		//ファイルを読み込む
+		ReadClass read = new ReadClass();
+
 
 	}
 
