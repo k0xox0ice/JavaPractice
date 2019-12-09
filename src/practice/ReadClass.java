@@ -16,9 +16,12 @@ public class ReadClass {
 		while (i != -1) {
 			//文字型にキャストする
 			char character = (char) i;
-			System.out.println(character);
+			System.out.print(character);
 			i = fr.read();
 		}
+
+		//ファイルを閉じる
+		fr.close();
 
 
 		/*

@@ -6,7 +6,7 @@ import java.io.IOException;
 public class WriteFile {
 	public WriteFile() throws IOException {
 
-		FileWriter fw;
+		FileWriter fw = null;
 		try {
 			//ファイルを開く
 			fw = new FileWriter("C:\\Users\\k-kurihara\\Documents\\自主学習\\java\\example_java.txt", true);
