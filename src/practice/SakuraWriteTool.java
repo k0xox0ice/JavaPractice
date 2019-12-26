@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 
-//import javax.crypto.CipherOutputStream;
+import javax.crypto.CipherOutputStream;
 
 public class SakuraWriteTool {
 
@@ -90,8 +90,8 @@ public class SakuraWriteTool {
 
 	public void WritingFile(String charsLine) throws IOException {
 		FileOutputStream fos = new FileOutputStream(fileName, true);
-		//CipherOutputStream cos = new CipherOutputStream(fos);
-		OutputStreamWriter osw = new OutputStreamWriter(fos);
+		CipherOutputStream cos = new CipherOutputStream(fos, null);
+		OutputStreamWriter osw = new OutputStreamWriter(cos);
 		BufferedWriter bw = new BufferedWriter(osw);
 		System.out.println("===ファイルの書き込み開始===");
 		try {

@@ -1,6 +1,10 @@
 package practice;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 
 public class Dofile {
 
@@ -24,6 +28,26 @@ public class Dofile {
 
 		//ファイルを読み込む
 		ReadClass read = new ReadClass();
+		System.out.println();
+
+
+		/*
+		System.out.println("===ファイル書き込み===");
+		SakuraWriteTool file0 = new SakuraWriteTool("「12523」を入力");
+		SakuraWriteTool file1 = new SakuraWriteTool(1);
+		SakuraWriteTool file2 = new SakuraWriteTool(" エルレイド");
+		SakuraWriteTool file3 = new SakuraWriteTool(2);
+		SakuraWriteTool file4 = new SakuraWriteTool(" ルカリオ");
+		file4.LoadingFile("C:\\Users\\k-kurihara\\Documents\\自主学習\\java\\サクラエディタ書き込み.txt");
+		*/
+
+		SakuraWriteTool file = new SakuraWriteTool();
+		file.SelectFile("C:\\Users\\k-kurihara\\Documents\\自主学習\\java\\サクラエディタ書き込み.txt");
+		//file.WritingFile("ポケットモンスター");
+		file.LoadingFile();
+
+		Path p1 = Paths.get("C:\\Users\\k-kurihara\\Documents\\自主学習\\java\\活動報告書_レジュメ.txt");
+		Files useFile = new Files();
 
 
 	}
