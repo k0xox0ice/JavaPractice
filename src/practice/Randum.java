@@ -16,8 +16,12 @@ public class Randum {
 
 			r = Random();
 
-			while (r != listNumbers[0] && r != listNumbers[1] && r != listNumbers[2]) {
-				r = Random();
+			while (r == listNumbers[0] && r == listNumbers[1] && r == listNumbers[2]) {
+				r2 = Random();
+			}
+
+			if (r != r2) {
+				r2 = r;
 			}
 
 			listNumbers[count] = r;
