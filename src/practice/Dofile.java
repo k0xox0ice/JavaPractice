@@ -1,7 +1,6 @@
 package practice;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -47,7 +46,12 @@ public class Dofile {
 		file.LoadingFile();
 
 		Path p1 = Paths.get("C:\\Users\\k-kurihara\\Documents\\自主学習\\java\\活動報告書_レジュメ.txt");
-		Files useFile = new Files();
+		//Files useFile = new Files();
+
+		SakuraWriteTool file2 = new SakuraWriteTool();
+		file2.SelectFile("C:\\Users\\k-kurihara\\Documents\\自主学習\\java\\活動報告書_レジュメ.txt");
+		file2.FileCopy();
+		file2.Copy9();
 
 
 	}
