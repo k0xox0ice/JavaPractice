@@ -25,7 +25,7 @@ public class SakuraWriteTool {
 	private String charsLine;
 	private FileWriter fw = null;
 	private FileReader fr = null;
-	private String fileName;
+	private String fileName = null;
 
 
 	public SakuraWriteTool() throws IOException {
@@ -75,14 +75,26 @@ public class SakuraWriteTool {
 		}
 	}
 
+	/**
+	 * ファイルパスを指定
+	 * @param fileName ファイルパス(ファイル名まで含む)
+	 */
 	public void SelectFile(String fileName) {
 		this.fileName = fileName;
 	}
 
+	/**
+	 * 対象のファイルにint型の数字を書き込む
+	 * <br>バファーフィルタを通して書き込みを行う
+	 * <br>使用前にSelectFileメソッドでパス指定を行う必要がある
+	 * @param num 書き込む数字
+	 * @throws IOException
+	 */
 	public void WritingFile(int num) throws IOException {
+		System.out.println("===ファイルの書き込み開始===");
+		fileNameCheak();
 		fw = new FileWriter(fileName, true);
 		BufferedWriter bw = new BufferedWriter(fw);
-		System.out.println("===ファイルの書き込み開始===");
 		try {
 			bw.write(num);
 			bw.flush();
@@ -103,7 +115,16 @@ public class SakuraWriteTool {
 		}
 	}
 
+	/**
+	 * 対象のファイルにString型の文字列を書き込む
+	 * <br>バファーフィルタを通して書き込みを行う
+	 * <br>使用前にSelectFileメソッドでパス指定を行う必要がある
+	 * @param charsLine 書き込む文字列
+	 * @throws IOException
+	 */
 	public void WritingFile(String charsLine) throws IOException {
+		System.out.println("===ファイルの書き込み開始===");
+		fileNameCheak();
 		FileOutputStream fos = new FileOutputStream(fileName, true);
 		CipherOutputStream cos = new CipherOutputStream(fos, null);
 		OutputStreamWriter osw = new OutputStreamWriter(cos);
@@ -127,11 +148,18 @@ public class SakuraWriteTool {
 
 
 
+	/**
+	 * ファイルの読み込みを行う
+	 * <br>読み込んだ内容をコンソールに出力する
+	 * <br>使用前にSelectFileメソッドでパス指定を行う必要がある
+	 * @throws IOException
+	 */
 	public void LoadingFile() throws IOException{
 		try {
+			System.out.println("===ファイルの読み込み開始===");
+			fileNameCheak();
 			fr = new FileReader(fileName);
 			BufferedReader br = new BufferedReader(fr);
-			System.out.println("===ファイルの読み込み開始===");
 			try {
 				int i = br.read();
 				while (i != -1) {
@@ -141,11 +169,11 @@ public class SakuraWriteTool {
 				System.out.println("===ファイルの読み込み完了===");
 				br.close();
 			}
-			catch (IOException e2) {
+			catch (IOException e) {
 				System.out.println("読み込み時にエラーが発生しました。");
 				br.close();
 			}
-		} catch (IOException e1) {
+		} catch (IOException ee) {
 			System.out.println("エラーが発生しました。");
 			System.out.println("SelectFileを起動したか確認してください");
 			fr.close();
@@ -153,11 +181,18 @@ public class SakuraWriteTool {
 
 	}
 
+	/**
+	 * ファイルのコピーを行う
+	 * <br>コピーしたファイル名は「コピーファイル.txt」になる
+	 * <br>使用前にSelectFileメソッドでパス指定を行う必要がある
+	 * @throws IOException
+	 */
 	public void FileCopy() throws IOException{
 		try {
+			System.out.println("===ファイルコピー開始===");
+			fileNameCheak();
 			Path path1 = Paths.get(fileName);
 			Path copyPath = Paths.get("C:\\Users\\k-kurihara\\Documents\\自主学習\\java\\コピーファイル.txt");
-			System.out.println("===ファイルコピー開始===");
 			Files.copy(path1, copyPath, REPLACE_EXISTING);
 			System.out.println("===ファイルコピー完了===");
 		}
@@ -166,14 +201,21 @@ public class SakuraWriteTool {
 		}
 	}
 
+	/**
+	 * Java実践編9章の練習問題の解答
+	 * <br>ファイルのコピーをFileInputStreamとFileOutputStreamを使用して作成した。
+	 * <br>使用前にSelectFileメソッドでパス指定を行う必要がある
+	 * @throws IOException
+	 */
 	public void Copy9() throws IOException {
+		System.out.println("===ファイルの読み込み/書き込み開始===");
+		fileNameCheak();
 		FileInputStream fis = new FileInputStream(fileName);
 		FileOutputStream fos = new FileOutputStream("C:\\Users\\k-kurihara\\Documents\\自主学習\\java\\練習9-1.txt");
 		BufferedOutputStream bos = new BufferedOutputStream(fos);
 		GZIPOutputStream gos = new GZIPOutputStream(bos);
 
 		try {
-			System.out.println("===ファイルの読み込み/書き込み開始===");
 			int i = fis.read();
 			while (i != -1) {
 				char i2 = (char)i;
@@ -203,11 +245,19 @@ public class SakuraWriteTool {
 		}
 	}
 
+	/**
+	 * ファイルの削除を行う
+	 * <br>削除を行うか否かをコマンド入力で確認する
+	 * <br>   1: 削除を行う / 2: 削除を中止する
+	 * <br>コマンドで1, 2以外を入力した場合は再度入力する内容のメッセージを表示する
+	 * <br>使用前にSelectFileメソッドでパス指定を行う必要がある
+	 * @throws IOException
+	 */
 	public void FileDelete() throws IOException {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("ファイルの削除を行いますか？");
 		System.out.println("削除したファイルのパスがSelectFileメソッドで指定されているか確認してください。");
-		System.out.println("値を入力してください。(1: 削除開始 2: 削除中断)");
+		System.out.println("値を入力してください。(1: 削除開始 2: 削除中止)");
 		System.out.print("   > ");
 
 		//入力した内容をインスタンスから取得
@@ -217,20 +267,36 @@ public class SakuraWriteTool {
 		if (input_text == 1) {
 			try {
 				System.out.println("===ファイルの削除開始===");
+				fileNameCheak();
 				Path path1 = Paths.get(fileName);
 				Files.delete(path1);
-				System.out.println("===ファイルの削除完了===");
 			}
 			catch (IOException e) {
 				System.out.println("対象ファイルのパスを確認することができませんでした。");
 			}
+			finally {
+			}
+			System.out.println("===ファイルの削除完了===");
+
 		} else if (input_text == 2) {
-			System.out.println("===ファイル削除を中断===");
+			System.out.println("===ファイル削除を中止===");
 		} else {
 			System.out.println("入力する値は1または2にして再入力してください。");
 		}
 	}
 
-
-
+	/**
+	 * <br>SelectFileメソッドでパス指定をしたかの確認を行う
+	 * <br>fileNameがnullの場合、プログラムを終了させる
+	 * <br>filenameに値が入力されている場合、そのままプログラムを続行させる
+	 */
+	public void fileNameCheak() {
+		if (fileName == null) {
+			System.out.println("SelectFileメソッドでファイルパスが指定されていません。");
+			System.out.println("ファイルパスを指定してから再度操作を行ってください。");
+			System.out.println("プログラムを終了します。");
+			System.exit(0);
+		} else {
+		}
+	}
 }
