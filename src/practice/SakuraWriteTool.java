@@ -254,39 +254,45 @@ public class SakuraWriteTool {
 	 * @throws IOException
 	 */
 	public void FileDelete() throws IOException {
+		boolean isErrorCheak = true;
+
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("ファイルの削除を行いますか？");
-		System.out.println("削除したファイルのパスがSelectFileメソッドで指定されているか確認してください。");
+		System.out.println("削除したいファイルがSelectFileメソッドで指定したか確認してください。");
 		System.out.println("値を入力してください。(1: 削除開始 2: 削除中止)");
 		System.out.print("   > ");
 
 		//入力した内容をインスタンスから取得
-		int input_text = scanner.nextInt();
-		System.out.println(input_text);
+		int input_num = scanner.nextInt();
+		System.out.println(input_num);
 
-		if (input_text == 1) {
+		if (input_num == 1) {
 			try {
 				System.out.println("===ファイルの削除開始===");
 				fileNameCheak();
 				Path path1 = Paths.get(fileName);
 				Files.delete(path1);
+				isErrorCheak = false;
 			}
 			catch (IOException e) {
 				System.out.println("対象ファイルのパスを確認することができませんでした。");
 			}
-			finally {
-			}
-			System.out.println("===ファイルの削除完了===");
 
-		} else if (input_text == 2) {
-			System.out.println("===ファイル削除を中止===");
+			if (isErrorCheak == false) {
+				System.out.println("===ファイルの削除完了===");
+			} else {
+				System.out.println("===ファイルの削除失敗===");
+			}
+
+		} else if (input_num == 2) {
+			System.out.println("===ファイルの削除中止===");
 		} else {
 			System.out.println("入力する値は1または2にして再入力してください。");
 		}
 	}
 
 	/**
-	 * <br>SelectFileメソッドでパス指定をしたかの確認を行う
+	 * SelectFileメソッドでパス指定をしたかの確認を行う
 	 * <br>fileNameがnullの場合、プログラムを終了させる
 	 * <br>filenameに値が入力されている場合、そのままプログラムを続行させる
 	 */
