@@ -53,6 +53,9 @@ public class Dofile {
 		file2.FileCopy();
 		file2.Copy9();
 
+		SakuraWriteTool file3 = new SakuraWriteTool();
+		file3.SelectFile("C:\\Users\\k-kurihara\\Documents\\自主学習\\java\\コピーファイル.txt");
+		file3.FileDelete();
 
 	}
 

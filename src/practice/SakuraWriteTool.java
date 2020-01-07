@@ -14,6 +14,7 @@ import java.io.OutputStreamWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Scanner;
 import java.util.zip.GZIPOutputStream;
 
 import javax.crypto.CipherOutputStream;
@@ -203,7 +204,31 @@ public class SakuraWriteTool {
 	}
 
 	public void FileDelete() throws IOException {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("ファイルの削除を行いますか？");
+		System.out.println("削除したファイルのパスがSelectFileメソッドで指定されているか確認してください。");
+		System.out.println("値を入力してください。(1: 削除開始 2: 削除中断)");
+		System.out.print("   > ");
 
+		//入力した内容をインスタンスから取得
+		int input_text = scanner.nextInt();
+		System.out.println(input_text);
+
+		if (input_text == 1) {
+			try {
+				System.out.println("===ファイルの削除開始===");
+				Path path1 = Paths.get(fileName);
+				Files.delete(path1);
+				System.out.println("===ファイルの削除完了===");
+			}
+			catch (IOException e) {
+				System.out.println("対象ファイルのパスを確認することができませんでした。");
+			}
+		} else if (input_text == 2) {
+			System.out.println("===ファイル削除を中断===");
+		} else {
+			System.out.println("入力する値は1または2にして再入力してください。");
+		}
 	}
 
 
