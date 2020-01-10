@@ -69,4 +69,10 @@ public class HoldingPokemon extends PokemonList {
 		System.out.println("手持ちのポケモンは" + getCounter() + "匹です。");
 	}
 
+	@Override
+	public String next() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
+	}
+
 }

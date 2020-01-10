@@ -1,5 +1,6 @@
 package practice;
 
+
 public class UsingPokemonBox extends PokemonList {
 
 	/**
@@ -26,6 +27,12 @@ public class UsingPokemonBox extends PokemonList {
 			System.out.println("登録したポケモンがボックスの上限を超えています。");
 			System.out.println("設定を見直してください。");
 		}
+	}
+
+	@Override
+	public String next() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
 	}
 
 }

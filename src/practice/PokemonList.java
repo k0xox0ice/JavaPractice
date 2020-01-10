@@ -65,6 +65,8 @@ public abstract class PokemonList implements Iterator<String> {
 	 * 配列に登録されている次の要素を確認し、
 	 * 登録されているポケモン名を戻り値として返す
 	 */
+
+	/*
 	@Override
 	public String next() {
 		int i = 0;
@@ -73,6 +75,8 @@ public abstract class PokemonList implements Iterator<String> {
 			return getEntryListName(i);
 		}
 	}
+	*/
+
 
 	/**
 	 * 配列の残り枠を表示する

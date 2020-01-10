@@ -24,12 +24,14 @@ public class 練習問題 {
 		System.out.println();
 		System.out.println("練習問題1-2");
 
+		/*
 		public void practice2 () {
 			if (folder.endsWith("\\") == false) {
 				folder = folder + "\\";
 			}
 			return folder + file;
 		}
+		*/
 
 
 	}
